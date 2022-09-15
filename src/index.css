@@ -76,15 +76,27 @@ body {
 }
 @media (min-width: 1100px) {
     .Question span {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
 .Question span:hover {
     background-color: #D6DBF5;
 }
 .selected {
-background-color: #D6DBF5;
+background-color: #D6DBF5 !important;
 pointer-events: none;
+}
+.buttons {
+    position: relative;
+}
+.selected:after {
+    content: 'selected';
+    position: absolute;
+    display: block;
+    right: 50%;
+    transform: translateX(50%);
+    font-weight: 600;
+    bottom: -14px
 }
 .correct {
 background-color: #94D7A2;
@@ -99,7 +111,7 @@ background-color: #F8BCBC;
     border-radius: 8px;
     font-size: 0.75rem;
 }
-.disable {
-    /* pointer-events: none; */
+.buttons:active {
+    box-shadow: inset 0px -1px 10px 0px rgba(133, 133, 133, 0.5)
 }
 /*  */

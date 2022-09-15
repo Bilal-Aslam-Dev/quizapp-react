@@ -7,35 +7,40 @@ const Question = (props) => {
             ans: props.incAns[0],
             id: nanoid(),
             isSelected: false,
+            background: "rgba(240, 57, 57, 0.54)"
         }, 
         {
             ans: props.incAns[1],
             id: nanoid(),
             isSelected: false,
+            background: "rgba(240, 57, 57, 0.54)"
         }, 
         {
             ans: props.incAns[2],
             id: nanoid(),
             isSelected: false,
+            background: "rgba(240, 57, 57, 0.54)"    
         }, 
         {
             ans: props.corAns,
             id:nanoid(),
             isSelected: false,
+            correct: true,
+            background: "lightgreen"
         }
     ]
-
+    
     const [answers, setAnswers] = React.useState(shuffle(allAnswers))    
-
     function isSelected(id) {
         setAnswers(oldAns => oldAns.map(answer => {
-            return answer.id === id ? 
-                {...answer, isSelected: !answer.isSelected} :
-                {...answer, disabled: true}
+            if (answer.id === id) {
+                return  {...answer, isSelected: !answer.isSelected, disabled: true}
+            }  else {
+               return {...answer, disabled: true}
+            }
         }))
 
     }   
-
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
         while (currentIndex !== 0) {
@@ -46,17 +51,18 @@ const Question = (props) => {
         }
     return array;
     }
-
+    
+    let styles
     const Answer = (props) => {
-        let styles
         if (props.disabled) {
             styles = {
-                pointerEvents: "none"
-            };
+                background: props.background,
+                pointerEvents: "none",
+                }
         }
         return (
             <span style={styles} onClick={props.handleClick}
-            className={`buttons ${props.held ? "selected" : "disable"}`}>
+            className={`buttons ${props.isSelected ? "selected" : ""}`}>
                 {props.answer}
             </span>
             )
@@ -66,9 +72,10 @@ const Question = (props) => {
         return <Answer 
             key={Math.random()}
             answer={answer.ans}
-            held={answer.isSelected}
+            isSelected={answer.isSelected}
             handleClick={() => isSelected(answer.id)}
             disabled={answer.disabled}
+            background={answer.background}
         />
     })
    
