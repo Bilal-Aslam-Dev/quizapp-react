@@ -65,8 +65,8 @@ body {
 }
 .Question span {
     padding: 0.3em 0.6em;
-    color: var(--seconday);
-    border: 1px solid var(--seconday);
+    color: rgb(87, 87, 87);
+    /* border: 1px solid var(--seconday); */
     font-size: 0.64rem;
     border-radius: 8px;
     min-width: 70px !important;
@@ -88,15 +88,17 @@ pointer-events: none;
 }
 .buttons {
     position: relative;
+    background: #e3e7fd;
 }
 .selected:after {
-    content: 'selected';
+    content: '✔';
     position: absolute;
     display: block;
+    color: rgb(95, 94, 94);
     right: 50%;
     transform: translateX(50%);
     font-weight: 600;
-    bottom: -14px
+    bottom: -17px
 }
 .correct {
 background-color: #94D7A2;

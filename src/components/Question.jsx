@@ -36,10 +36,9 @@ const Question = (props) => {
             if (answer.id === id) {
                 return  {...answer, isSelected: !answer.isSelected, disabled: true}
             }  else {
-               return {...answer, disabled: true}
+                return {...answer, disabled: true}
             }
         }))
-
     }   
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
